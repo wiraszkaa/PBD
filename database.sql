@@ -138,10 +138,15 @@ CREATE TABLE "Purchase" (
   "FK_UserId" integer
 );
 
-ALTER TABLE "Sector" ADD FOREIGN KEY ("FK_FaithName") REFERENCES "Faith" ("FaithName");
-ALTER TABLE "Monument" ADD FOREIGN KEY ("FK_SectorId") REFERENCES "Sector" ("SectorId");
-ALTER TABLE "Gate" ADD FOREIGN KEY ("FK_SectorId") REFERENCES "Sector" ("SectorId");
-ALTER TABLE "Camera" ADD FOREIGN KEY ("FK_SectorId") REFERENCES "Sector" ("SectorId");
+
+
+
+
+
+ALTER TABLE "Sector" ADD FOREIGN KEY ("FK_FaithName") REFERENCES "Faith" ("FaithName")  ON DELETE SET NULL;
+ALTER TABLE "Monument" ADD FOREIGN KEY ("FK_SectorId") REFERENCES "Sector" ("SectorId") ON DELETE SET NULL;
+ALTER TABLE "Gate" ADD FOREIGN KEY ("FK_SectorId") REFERENCES "Sector" ("SectorId") ON DELETE CASCADE;
+ALTER TABLE "Camera" ADD FOREIGN KEY ("FK_SectorId") REFERENCES "Sector" ("SectorId") ON DELETE CASCADE;
 ALTER TABLE "Grave" ADD FOREIGN KEY ("FK_SectorId") REFERENCES "Sector" ("SectorId");
 ALTER TABLE "Chapel" ADD FOREIGN KEY ("FK_SectorId") REFERENCES "Sector" ("SectorId");
 ALTER TABLE "Funeral" ADD FOREIGN KEY ("FK_ChapelId") REFERENCES "Chapel" ("ChapelId");
@@ -156,5 +161,6 @@ ALTER TABLE "DeceasedHistory" ADD FOREIGN KEY ("FK_DeceasedId") REFERENCES "Dece
 ALTER TABLE "Subscription" ADD FOREIGN KEY ("FK_GraveId") REFERENCES "Grave" ("GraveId");
 ALTER TABLE "Subscription" ADD FOREIGN KEY ("FK_ServiceId") REFERENCES "Service" ("ServiceId");
 ALTER TABLE "Subscription" ADD FOREIGN KEY ("FK_PaymentId") REFERENCES "Payment" ("PaymentId");
-ALTER TABLE "Purchase" ADD FOREIGN KEY ("FK_UserId") REFERENCES "User" ("UserId");
-ALTER TABLE "Purchase" ADD FOREIGN KEY ("FK_ServiceId") REFERENCES "Service" ("ServiceId");
+ALTER TABLE "Purchase" ADD FOREIGN KEY ("FK_UserId") REFERENCES "User" ("UserId") ON DELETE CASCADE;
+ALTER TABLE "Purchase" ADD FOREIGN KEY ("FK_ServiceId") REFERENCES "Service" ("ServiceId") ON DELETE CASCADE;
+
