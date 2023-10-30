@@ -1,0 +1,25 @@
+{
+  "services": [
+    {"name": "Czyszczenie grobu", "description": "Usługa polegająca na czyszczeniu i konserwacji nagrobka."},
+    {"name": "Podlewanie kwiatów", "description": "Regularne podlewanie kwiatów i roślin na grobie."},
+    {"name": "Zamiana kwiatów", "description": "Usuwanie zwiędłych kwiatów i zastępowanie ich świeżymi."},
+    {"name": "Konserwacja nagrobka", "description": "Prace konserwacyjne kamienia nagrobnego."},
+    {"name": "Montaż dodatków", "description": "Montaż zniczy, latarenek i innych dodatków nagrobnych."},
+    {"name": "Nawożenie roślin", "description": "Doprowadzenie odpowiednich nawozów dla roślin."},
+    {"name": "Strzyżenie trawy", "description": "Regularne strzyżenie trawy wokół grobu."},
+    {"name": "Malowanie ogrodzenia", "description": "Odświeżanie ogrodzenia wokół grobu."},
+    {"name": "Montaż ogrodzenia", "description": "Instalacja nowego ogrodzenia wokół grobu."},
+    {"name": "Renowacja nagrobka", "description": "Kompleksowa renowacja nagrobka, włączając w to prace kamieniarskie."},
+    {"name": "Odśnieżanie", "description": "Usuwanie śniegu z grobu w sezonie zimowym."},
+    {"name": "Montaż płyt", "description": "Układanie płyt wzdłuż grobu."},
+    {"name": "Ustawianie zniczy", "description": "Rozstawianie zniczy w odpowiednich miejscach."},
+    {"name": "Czyszczenie ścieżek", "description": "Usuwanie liści i innych zanieczyszczeń z chodników wokół grobu."},
+    {"name": "Zakładanie roślin", "description": "Sadzenie nowych roślin na grobie."},
+    {"name": "Zabezpieczanie grobu", "description": "Instalacja systemów zabezpieczających przed kradzieżą."},
+    {"name": "Pielęgnacja drzew", "description": "Przycinanie gałęzi drzew znajdujących się w pobliżu grobu."},
+    {"name": "Odnowienie zdjęć", "description": "Odnowienie i konserwacja fotografii na nagrobku."},
+    {"name": "Odgrzybianie", "description": "Usuwanie i zapobieganie powstawaniu grzyba na nagrobku."},
+    {"name": "Odtwarzanie napisów", "description": "Renowacja i odtwarzanie inskrypcji nagrobnej."},
+    {"name": "Prace kamieniarskie", "description": "Różnorodne prace kamieniarskie związane z nagrobkiem."}
+    ]
+}
