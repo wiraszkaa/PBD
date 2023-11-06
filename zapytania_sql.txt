@@ -32,12 +32,26 @@ WHERE  s."SectorName" = 'centralny' AND c."ChapelName" = 'Kaplica_7104' AND f."F
 GROUP BY  c."ChapelName";
 
 5)
-SELECT s."ServiceId", s."ServiceName", s."ServiceDescription", s."ServicePrice"
-FROM  "Service" s
-JOIN  "Purchase" p ON s."ServiceId" = p."FK_ServiceId"
-JOIN  "User" u ON p."FK_UserId" = u."UserId"
-WHERE  u."UserEmail" = 'sophia_wilson452485396871@outlook.com'
-ORDER BY s."ServicePrice" DESC
+SELECT 
+    s."ServiceId", 
+    s."ServiceName", 
+    s."ServiceDescription", 
+    s."ServicePrice"
+FROM  
+    "Service" s
+JOIN 
+    "Purchase" p ON s."ServiceId" = p."FK_ServiceId"
+JOIN 
+    "User" u ON p."FK_UserId" = u."UserId"
+WHERE 
+    s."ServicePrice" = (
+        SELECT MAX(s2."ServicePrice")
+        FROM "Service" s2
+        JOIN "Purchase" p2 ON s2."ServiceId" = p2."FK_ServiceId"
+        JOIN "User" u2 ON p2."FK_UserId" = u2."UserId"
+        WHERE u2."UserEmail" = 'sophia_wilson452485396871@outlook.com'
+    )
+AND u."UserEmail" = 'sophia_wilson452485396871@outlook.com'
 LIMIT 1;
 
 6)
