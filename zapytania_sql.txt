@@ -5,10 +5,10 @@ JOIN "User" u ON r."FK_UserId" = u."UserId"
 WHERE u."UserEmail" = 'james.lee934769444573@gmail.com' AND r."ReservationDate" > '1900-01-01';
 
 2)
-SELECT c.* 
-FROM "Camera" c
-JOIN "Sector" s ON c."FK_SectorId" = s."SectorId"
-WHERE s."SectorName" = 'boczno-zachodni' AND c."CameraModel" = 'Model_53' AND c."InstallationDate" > '2021-01-01';
+SELECT D.*, DH."HistoryDescription", DH."DateAdded"
+FROM "Deceased" D
+INNER JOIN "DeceasedHistory" DH ON D."DeceasedId" = DH."FK_DeceasedId"
+WHERE D."DeceasedFirstName" = 'Paweł' AND D."DeceasedLastName" = 'Nowak';
 
 3)
 SELECT COUNT(d."DeceasedId") AS "TotalDeceased"
@@ -55,15 +55,23 @@ JOIN "Faith" F ON D."FK_FaithName" = F."FaithName"
 WHERE FUN."FuneralId" IS NULL;
 
 8)
-SELECT R."ReservationDate", R."FK_GraveId", R."ReservationStatus", R."ReservationExpirationDate"
+SELECT 
+    R."ReservationDate",
+    R."FK_GraveId",
+    R."ReservationStatus",
+    R."ReservationExpirationDate",
+    G."GraveType",
+    G."GraveStatus",
+    G."PaymentExpirationDate"
 FROM "Reservation" R
-WHERE R."FK_UserId" = 88640; 
+JOIN "Grave" G ON R."FK_GraveId" = G."GraveId"
+WHERE R."FK_UserId" = 88640;
 
 9)
-SELECT D.*, DH."HistoryDescription", DH."DateAdded"
-FROM "Deceased" D
-INNER JOIN "DeceasedHistory" DH ON D."DeceasedId" = DH."FK_DeceasedId"
-WHERE D."DeceasedFirstName" = 'Paweł' AND D."DeceasedLastName" = 'Nowak';
+SELECT c.* 
+FROM "Camera" c
+JOIN "Sector" s ON c."FK_SectorId" = s."SectorId"
+WHERE s."SectorName" = 'boczno-zachodni' AND c."CameraModel" = 'Model_53' AND c."InstallationDate" > '2021-01-01';
 
 10)
 SELECT Ser."ServiceName" AS "ServiceName", Sub."ServiceStartTime" AS "StartDate", Sub."ServiceEndTime" AS "EndDate", Pay."PaymentStatus" AS "PaymentStatus"
