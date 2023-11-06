@@ -82,10 +82,11 @@ JOIN "Grave" G ON R."FK_GraveId" = G."GraveId"
 WHERE R."FK_UserId" = 88640;
 
 9)
-SELECT c.* 
-FROM "Camera" c
-JOIN "Sector" s ON c."FK_SectorId" = s."SectorId"
-WHERE s."SectorName" = 'boczno-zachodni' AND c."CameraModel" = 'Model_53' AND c."InstallationDate" > '2021-01-01';
+SELECT
+  SUM(CASE WHEN "ReservationStatus" = 'Success' THEN 1 ELSE 0 END) AS "SuccessfulReservations",
+  SUM(CASE WHEN "ReservationStatus" = 'Expired' AND "FK_PaymentId" IS NULL THEN 1 ELSE 0 END) AS "UnpaidExpiredReservations"
+FROM "Reservation"
+WHERE "ReservationDate" >= '2023-10-11';
 
 10)
 SELECT Ser."ServiceName" AS "ServiceName", Sub."ServiceStartTime" AS "StartDate", Sub."ServiceEndTime" AS "EndDate", Pay."PaymentStatus" AS "PaymentStatus"
