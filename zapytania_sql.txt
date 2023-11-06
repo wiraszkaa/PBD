@@ -6,7 +6,7 @@ WHERE u."UserEmail" = 'james.lee934769444573@gmail.com' AND r."ReservationDate" 
 
 2)
 SELECT
-  SUM(CASE WHEN "ReservationStatus" = 'Success' THEN 1 ELSE 0 END) AS "SuccessfulReservations",
+  SUM(CASE WHEN "ReservationStatus" = 'Active' THEN 1 ELSE 0 END) AS "SuccessfulReservations",
   SUM(CASE WHEN "ReservationStatus" = 'Expired' AND "FK_PaymentId" IS NULL THEN 1 ELSE 0 END) AS "UnpaidExpiredReservations"
 FROM "Reservation"
 WHERE "ReservationDate" >= '2023-10-11';
@@ -85,12 +85,12 @@ WHERE R."FK_UserId" = 88640;
 9)
 SELECT D.*, DH."HistoryDescription", DH."DateAdded"
 FROM "Deceased" D
-INNER JOIN "DeceasedHistory" DH ON D."DeceasedId" = DH."FK_DeceasedId"
+JOIN "DeceasedHistory" DH ON D."DeceasedId" = DH."FK_DeceasedId"
 WHERE D."DeceasedFirstName" = 'Paweł' AND D."DeceasedLastName" = 'Nowak';
 
 10)
 SELECT Ser."ServiceName" AS "ServiceName", Sub."ServiceStartTime" AS "StartDate", Sub."ServiceEndTime" AS "EndDate", Pay."PaymentStatus" AS "PaymentStatus"
 FROM "Subscription" Sub
-INNER JOIN "Service" Ser ON Sub."FK_ServiceId" = Ser."ServiceId"
-INNER JOIN "Payment" Pay ON Sub."FK_PaymentId" = Pay."PaymentId"
+JOIN "Service" Ser ON Sub."FK_ServiceId" = Ser."ServiceId"
+JOIN "Payment" Pay ON Sub."FK_PaymentId" = Pay."PaymentId"
 WHERE Sub."FK_GraveId" = 12331; 
