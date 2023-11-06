@@ -1,8 +1,7 @@
 1)
-SELECT r.* 
-FROM "Reservation" r
-JOIN "User" u ON r."FK_UserId" = u."UserId"
-WHERE u."UserEmail" = 'james.lee934769444573@gmail.com' AND r."ReservationDate" > '1900-01-01';
+SELECT "ServiceName", MAX("ServiceEndTime" - "ServiceStartTime") AS "LongestDuration"
+FROM "Subscription"
+JOIN "Service" ON "Subscription"."FK_ServiceId" = "Service"."ServiceId";
 
 2)
 SELECT
