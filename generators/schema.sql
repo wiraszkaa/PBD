@@ -81,7 +81,7 @@ CREATE TABLE "Deceased" (
 CREATE TABLE "Payment" (
   "PaymentId" bigserial PRIMARY KEY,
   "Amount" Money,
-  "PaymentDate" date NOT NULL CHECK ("PaymentDate" < date('now')),
+  "PaymentDate" date NOT NULL CHECK ("PaymentDate" <= date('now')),
   "PaymentStatus" varchar(10) NOT NULL,
   "PaymentMethod" varchar(20) NOT NULL,
   "PaymentDescription" varchar(200)

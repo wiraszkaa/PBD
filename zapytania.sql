@@ -1,4 +1,4 @@
-1)
+-- 1)
 SELECT 
     S."ServiceName" AS "Usługa", 
     Sub."ServiceStartTime" AS "Czas rozpoczecia", 
@@ -13,26 +13,26 @@ GROUP BY
 ORDER BY "Czas" DESC
 LIMIT 1;
 
-2)
+-- 2)
 SELECT
   SUM(CASE WHEN "ReservationStatus" = 'Active' THEN 1 ELSE 0 END) AS "SuccessfulReservations",
   SUM(CASE WHEN "ReservationStatus" = 'Expired' THEN 1 ELSE 0 END) AS "UnpaidExpiredReservations"
 FROM "Reservation"
 WHERE "ReservationDate" >= '2023-10-11';
 
-3)
+-- 3)
 SELECT COUNT(d."DeceasedId") AS "TotalDeceased"
 FROM "Deceased" d
 JOIN "Grave" g ON d."FK_GraveId" = g."GraveId"
 JOIN "Sector" s ON g."FK_SectorId" = s."SectorId"
 JOIN "Faith" f ON d."FK_FaithName" = f."FaithName"
-WHERE s."SectorName" = 'centralny' AND f."FaithName" = 'Katolicka';
+WHERE s."SectorName" = 'tylno-wschodni' AND f."FaithName" = 'Katolicka';
 
-4)
+-- 4)
 SELECT  c."ChapelId", c."ChapelName"
 FROM  "Sector" s
 JOIN  "Chapel" c ON c."FK_SectorId" = s."SectorId"
-WHERE  s."SectorName" = 'centralny';
+WHERE  s."SectorName" = 'tylno-wschodni';
 
 SELECT c."ChapelName", COUNT(f."FuneralId") AS "NumberOfFunerals"
 FROM  "Chapel" c
@@ -41,7 +41,7 @@ JOIN  "Sector" s ON c."FK_SectorId" = s."SectorId"
 WHERE  s."SectorName" = 'centralny' AND c."ChapelName" = 'Kaplica_7104' AND f."FuneralDate" >= '1900-01-01'
 GROUP BY  c."ChapelName";
 
-5)
+-- 5)
 SELECT 
     s."ServiceId", 
     s."ServiceName", 
@@ -64,21 +64,21 @@ WHERE
 AND u."UserEmail" = 'sophia_wilson452485396871@outlook.com'
 LIMIT 1;
 
-6)
+-- 6)
 select S.*  
 FROM "User" U
 JOIN "Purchase" P ON U."UserId" = P."FK_UserId"
 JOIN "Service" S ON P."FK_ServiceId" = S."ServiceId"
 WHERE U."UserId" = 17465;
 
-7)
+-- 7)
 SELECT D."DeceasedId", D."DeceasedFirstName", D."DeceasedLastName", F."FaithName"
 FROM "Deceased" D
 LEFT JOIN "Funeral" FUN ON D."DeceasedId" = FUN."FK_DeceasedId"
 JOIN "Faith" F ON D."FK_FaithName" = F."FaithName"
 WHERE FUN."FuneralId" IS NULL;
 
-8)
+-- 8)
 SELECT 
     R."ReservationDate",
     R."FK_GraveId",
@@ -91,13 +91,13 @@ FROM "Reservation" R
 JOIN "Grave" G ON R."FK_GraveId" = G."GraveId"
 WHERE R."FK_UserId" = 88640;
 
-9)
+-- 9)
 SELECT D.*, DH."HistoryDescription", DH."DateAdded"
 FROM "Deceased" D
 JOIN "DeceasedHistory" DH ON D."DeceasedId" = DH."FK_DeceasedId"
 WHERE D."DeceasedFirstName" = 'Paweł' AND D."DeceasedLastName" = 'Nowak';
 
-10)
+-- 10)
 SELECT Ser."ServiceName" AS "ServiceName", Sub."ServiceStartTime" AS "StartDate", Sub."ServiceEndTime" AS "EndDate", Pay."PaymentStatus" AS "PaymentStatus"
 FROM "Subscription" Sub
 JOIN "Service" Ser ON Sub."FK_ServiceId" = Ser."ServiceId"

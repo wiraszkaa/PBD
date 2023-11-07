@@ -15,7 +15,7 @@ CREATE TABLE "Sector" (
 CREATE TABLE "Faith" (
   "FaithName" varchar(50) PRIMARY KEY,
   "FaithDescription" varchar(100) NOT NULL,
-  "NumberOfBelievers" integer CHECK ("NumberOfBelievers" > 0)
+  "NumberOfBelievers" integer CHECK ("NumberOfBelievers" >= 0)
 );
 
 CREATE TABLE "Monument" (
@@ -81,7 +81,7 @@ CREATE TABLE "Deceased" (
 CREATE TABLE "Payment" (
   "PaymentId" bigserial PRIMARY KEY,
   "Amount" Money,
-  "PaymentDate" date NOT NULL CHECK ("PaymentDate" < date('now')),
+  "PaymentDate" date NOT NULL CHECK ("PaymentDate" <= date('now')),
   "PaymentStatus" varchar(10) NOT NULL,
   "PaymentMethod" varchar(20) NOT NULL,
   "PaymentDescription" varchar(200)
@@ -137,11 +137,6 @@ CREATE TABLE "Purchase" (
   "FK_ServiceId" integer NOT NULL,
   "FK_UserId" integer
 );
-
-
-
-
-
 
 ALTER TABLE "Sector" ADD FOREIGN KEY ("FK_FaithName") REFERENCES "Faith" ("FaithName")  ON DELETE SET NULL;
 ALTER TABLE "Monument" ADD FOREIGN KEY ("FK_SectorId") REFERENCES "Sector" ("SectorId") ON DELETE SET NULL;
