@@ -16,7 +16,7 @@ LIMIT 1;
 2)
 SELECT
   SUM(CASE WHEN "ReservationStatus" = 'Active' THEN 1 ELSE 0 END) AS "SuccessfulReservations",
-  SUM(CASE WHEN "ReservationStatus" = 'Expired' AND "FK_PaymentId" IS NULL THEN 1 ELSE 0 END) AS "UnpaidExpiredReservations"
+  SUM(CASE WHEN "ReservationStatus" = 'Expired' THEN 1 ELSE 0 END) AS "UnpaidExpiredReservations"
 FROM "Reservation"
 WHERE "ReservationDate" >= '2023-10-11';
 
