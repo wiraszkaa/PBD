@@ -1,7 +1,17 @@
 1)
-SELECT "ServiceName", MAX("ServiceEndTime" - "ServiceStartTime") AS "LongestDuration"
-FROM "Subscription"
-JOIN "Service" ON "Subscription"."FK_ServiceId" = "Service"."ServiceId";
+SELECT 
+    S."ServiceName" AS "Usługa", 
+    Sub."ServiceStartTime" AS "Czas rozpoczecia", 
+    Sub."ServiceEndTime" AS "Czas zakonczenia", 
+    MAX(Sub."ServiceEndTime" - Sub."ServiceStartTime") AS "Czas"
+FROM 
+    "Subscription" AS Sub
+JOIN 
+    "Service" AS S ON Sub."FK_ServiceId" = S."ServiceId"
+GROUP BY 
+    S."ServiceName", Sub."ServiceStartTime", Sub."ServiceEndTime"
+ORDER BY "Czas" DESC
+LIMIT 1;
 
 2)
 SELECT
