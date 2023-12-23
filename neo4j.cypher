@@ -166,4 +166,8 @@ RETURN fu.FuneralId, fu.FuneralDate, fu.FuneralDescription;
 MATCH (fu:Funeral)-[:USES]->(ch:Chapel {ChapelName: "Saint Paul's Chapel"})
 RETURN fu.FuneralId, fu.FuneralDate, fu.FuneralDescription;
 
+//Wszystkie bramy wejsciowe i ich godziny otwarcia w sektorze Edukacji:
+MATCH (g:Gate)-[:LOCATED_IN]->(s:Sector {SectorName: "Education"})
+RETURN g.GateName, g.OpeningHours;
+
 
