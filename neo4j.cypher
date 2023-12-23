@@ -1,233 +1,116 @@
-:param sector_id => 1;
-:param sector_name => "Education";
-:param sector_description => "Sector focusing on educational services";
-:param faith_name => "Christianity";
-
-:param faith_description => "A spiritual tradition that focuses on personal spiritual development and the attainment of a deep insight into the true nature of life.";
-:param believers_count => 520000000;
-
-:param monument_id => 1;
-:param monument_name => "Liberty Statue";
-:param monument_description => "A famous monument located in New York City";
-:param monument_sector_id => 1;
-
-:param gate_id => 1;
-:param gate_name => "Main Entrance";
-:param gate_description => "The primary entrance for visitors";
-:param opening_hours => "09:00 - 17:00";
-:param gate_sector_id => 1;
-
-:param camera_id => 1;
-:param camera_model => "Nikon D3500";
-:param camera_manufacturer => "Nikon";
-:param installation_date => date("2023-01-01");
-:param is_dummy => false;
-:param camera_sector_id => 1;
-
-:param grave_id => 1;
-:param grave_type => "Single";
-:param grave_status => "Occupied";
-:param payment_expiration_date => date("2024-01-01");
-:param grave_sector_id => 1;
-
-:param chapel_id => 1;
-:param chapel_name => "Saint Paul's Chapel";
-:param architectural_style => "Gothic";
-:param chapel_sector_id => 1;
-
-:param funeral_id => 1;
-:param funeral_date => date("2023-05-01");
-:param funeral_description => "Funeral of a renowned philanthropist";
-:param funeral_chapel_id => 1;
-:param funeral_deceased_id => 1;
-:param funeral_payment_id => 1;
-
-:param deceased_id => 1;
-:param deceased_first_name => "John";
-:param deceased_last_name => "Doe";
-:param date_of_death => date("2023-04-30");
-:param date_of_birth => date("1950-01-01");
-:param cause_of_death => "Natural causes";
-:param deceased_pesel => "12345678901";
-:param deceased_grave_id => 1;
-:param deceased_faith_name => 1;
-
-:param payment_id => 1;
-:param amount => 100.00;
-:param payment_date => date("2023-05-01");
-:param payment_status => "Completed";
-:param payment_method => "Credit Card";
-:param payment_description => "Funeral service payment";
-
-:param reservation_id => 1;
-:param reservation_description => "Grave reservation";
-:param reservation_date => date("2023-04-01");
-:param reservation_expiration_date => date("2023-06-01");
-:param reservation_status => "Active";
-:param reservation_user_id => 1;
-:param reservation_grave_id => 1;
-:param reservation_payment_id => 1;
-
-:param user_id => 1;
-:param user_first_name => "Alice";
-:param user_last_name => "Smith";
-:param user_email => "alice.smith@example.com";
-:param user_password => "password123";
-:param user_phone_number => "+123456789";
-:param user_role => "Administrator";
-
-:param service_id => 1;
-:param service_name => "Grave Maintenance";
-:param service_description => "Regular cleaning and flower placement";
-:param service_price => 50.00;
-
-:param deceased_history_id => 1;
-:param history_description => "Documented life achievements and milestones";
-:param date_added => date("2023-05-02");
-:param deceased_history_deceased_id => 1;
-
-:param subscription_id => 1;
-:param service_start_time => date("2023-05-01");
-:param service_end_time => date("2023-05-31");
-:param subscription_grave_id => 1;
-:param subscription_service_id => 1;
-:param subscription_payment_id => 1;
-
-:param purchase_id => 1;
-:param purchase_service_id => 1;
-:param purchase_user_id => 1;
 
 CREATE (:Sector {
-    SectorId: 1,
-    SectorName: $sector_name,
-    SectorDescription: $sector_description,
-    FK_FaithName: $faith_name
+    SectorId: 1, 
+    SectorName: "Education", 
+    SectorDescription: "Sector focusing on educational services"
 });
 
 CREATE (:Faith {
-    FaithName: $faith_name,
-    FaithDescription: $faith_description,
-    NumberOfBelievers: $believers_count
+    FaithName: "Christianity", 
+    FaithDescription: "A spiritual tradition that focuses on personal spiritual development and the attainment of a deep insight into the true nature of life.", 
+    NumberOfBelievers: 520000000
 });
 
 CREATE (:Monument {
-    MonumentId: $monument_id,
-    MonumentName: $monument_name,
-    MonumentDescription: $monument_description,
-    FK_SectorId: $monument_sector_id
+    MonumentId: 1, 
+    MonumentName: "Liberty Statue", 
+    MonumentDescription: "A famous monument located in New York City"
 });
 
 CREATE (:Gate {
-    GateId: $gate_id,
-    GateName: $gate_name,
-    GateDescription: $gate_description,
-    OpeningHours: $opening_hours,
-    FK_SectorId: $gate_sector_id
+    GateId: 1, 
+    GateName: "Main Entrance", 
+    GateDescription: "The primary entrance for visitors", 
+    OpeningHours: "09:00 - 17:00"
 });
 
 CREATE (:Camera {
-    CameraId: $camera_id,
-    CameraModel: $camera_model,
-    CameraManufacturer: $camera_manufacturer,
-    InstallationDate: $installation_date,
-    IsDummy: $is_dummy,
-    FK_SectorId: $camera_sector_id
+    CameraId: 1, 
+    CameraModel: "Nikon D3500", 
+    CameraManufacturer: "Nikon", 
+    InstallationDate: date("2023-01-01"), 
+    IsDummy: false
 });
 
 CREATE (:Grave {
-    GraveId: $grave_id,
-    GraveType: $grave_type,
-    GraveStatus: $grave_status,
-    PaymentExpirationDate: $payment_expiration_date,
-    FK_SectorId: $grave_sector_id
+    GraveId: 1, 
+    GraveType: "Single", 
+    GraveStatus: "Occupied", 
+    PaymentExpirationDate: date("2024-01-01")
 });
 
 CREATE (:Chapel {
-    ChapelId: $chapel_id,
-    ChapelName: $chapel_name,
-    ArchitecturalStyle: $architectural_style,
-    FK_SectorId: $chapel_sector_id
+    ChapelId: 1, 
+    ChapelName: "Saint Paul's Chapel", 
+    ArchitecturalStyle: "Gothic"
 });
 
 CREATE (:Funeral {
-    FuneralId: $funeral_id,
-    FuneralDate: $funeral_date,
-    FuneralDescription: $funeral_description,
-    FK_ChapelId: $funeral_chapel_id,
-    FK_DeceasedId: $funeral_deceased_id,
-    FK_PaymentId: $funeral_payment_id
+    FuneralId: 1, 
+    FuneralDate: date("2023-05-01"), 
+    FuneralDescription: "Funeral of a renowned philanthropist"
 });
 
 CREATE (:Deceased {
-    DeceasedId: $deceased_id,
-    DeceasedFirstName: $deceased_first_name,
-    DeceasedLastName: $deceased_last_name,
-    DateOfDeath: $date_of_death,
-    DateOfBirth: $date_of_birth,
-    CauseOfDeath: $cause_of_death,
-    DeceasedPESEL: $deceased_pesel,
-    FK_GraveId: $deceased_grave_id,
-    FK_FaithName: $deceased_faith_name
+    DeceasedId: 1, 
+    DeceasedFirstName: "John", 
+    DeceasedLastName: "Doe", 
+    DateOfDeath: date("2023-04-30"), 
+    DateOfBirth: date("1950-01-01"), 
+    CauseOfDeath: "Natural causes", 
+    DeceasedPESEL: "12345678901"
 });
 
 CREATE (:Payment {
-    PaymentId: $payment_id,
-    Amount: $amount,
-    PaymentDate: $payment_date,
-    PaymentStatus: $payment_status,
-    PaymentMethod: $payment_method,
-    PaymentDescription: $payment_description
+    PaymentId: 1, 
+    Amount: 100.00, 
+    PaymentDate: date("2023-05-01"), 
+    PaymentStatus: "Completed", 
+    PaymentMethod: "Credit Card", 
+    PaymentDescription: "Funeral service payment"
 });
 
 CREATE (:Reservation {
-    ReservationId: $reservation_id,
-    ReservationDescription: $reservation_description,
-    ReservationDate: $reservation_date,
-    ReservationExpirationDate: $reservation_expiration_date,
-    ReservationStatus: $reservation_status,
-    FK_UserId: $reservation_user_id,
-    FK_GraveId: $reservation_grave_id,
-    FK_PaymentId: $reservation_payment_id
+    ReservationId: 1, 
+    ReservationDescription: "Grave reservation", 
+    ReservationDate: date("2023-04-01"), 
+    ReservationExpirationDate: date("2023-06-01"), 
+    ReservationStatus: "Active"
 });
 
 CREATE (:User {
-    UserId: $user_id,
-    UserFirstName: $user_first_name,
-    UserLastName: $user_last_name,
-    UserEmail: $user_email,
-    UserPassword: $user_password,
-    UserPhoneNumber: $user_phone_number,
-    UserRole: $user_role
+    UserId: 1, 
+    UserFirstName: "Alice", 
+    UserLastName: "Smith", 
+    UserEmail: "alice.smith@example.com", 
+    UserPassword: "password123", 
+    UserPhoneNumber: "+123456789", 
+    UserRole: "Administrator"
 });
 
 CREATE (:Service {
-    ServiceId: $service_id,
-    ServiceName: $service_name,
-    ServiceDescription: $service_description,
-    ServicePrice: $service_price
+    ServiceId: 1, 
+    ServiceName: "Grave Maintenance", 
+    ServiceDescription: "Regular cleaning and flower placement", 
+    ServicePrice: 50.00
 });
 
 CREATE (:DeceasedHistory {
-    DeceasedHistoryId: $deceased_history_id,
-    HistoryDescription: $history_description,
-    DateAdded: $date_added,
-    FK_DeceasedId: $deceased_history_deceased_id
+    DeceasedHistoryId: 1, 
+    HistoryDescription: "Documented life achievements and milestones", 
+    DateAdded: date("2023-05-02")
 });
 
 CREATE (:Subscription {
-    SubscriptionId: $subscription_id,
-    ServiceStartTime: $service_start_time,
-    ServiceEndTime: $service_end_time,
-    FK_GraveId: $subscription_grave_id,
-    FK_ServiceId: $subscription_service_id,
-    FK_PaymentId: $subscription_payment_id
+    SubscriptionId: 1, 
+    ServiceStartTime: date("2023-05-01"), 
+    ServiceEndTime: date("2023-05-31")
 });
 
 CREATE (:Purchase {
-    PurchaseId: $purchase_id,
-    FK_ServiceId: $purchase_service_id,
-    FK_UserId: $purchase_user_id
+    PurchaseId: 1
 });
+
 
 
 CREATE CONSTRAINT FOR (s:Sector) REQUIRE s.SectorId IS UNIQUE;
@@ -247,23 +130,23 @@ CREATE CONSTRAINT FOR (dh:DeceasedHistory) REQUIRE dh.DeceasedHistoryId IS UNIQU
 CREATE CONSTRAINT FOR (sub:Subscription) REQUIRE sub.SubscriptionId IS UNIQUE;
 CREATE CONSTRAINT FOR (pu:Purchase) REQUIRE pu.PurchaseId IS UNIQUE;
 
-MATCH (s:Sector), (f:Faith) WHERE s.FK_FaithName = f.FaithName CREATE (s)-[:HAS_FAITH]->(f);
-MATCH (m:Monument), (s:Sector) WHERE m.FK_SectorId = s.SectorId CREATE (m)-[:LOCATED_IN]->(s);
-MATCH (g:Gate), (s:Sector) WHERE g.FK_SectorId = s.SectorId CREATE (g)-[:LOCATED_IN]->(s);
-MATCH (c:Camera), (s:Sector) WHERE c.FK_SectorId = s.SectorId CREATE (c)-[:LOCATED_IN]->(s);
-MATCH (gr:Grave), (s:Sector) WHERE gr.FK_SectorId = s.SectorId CREATE (gr)-[:LOCATED_IN]->(s);
-MATCH (ch:Chapel), (s:Sector) WHERE ch.FK_SectorId = s.SectorId CREATE (ch)-[:LOCATED_IN]->(s);
-MATCH (fu:Funeral), (ch:Chapel) WHERE fu.FK_ChapelId = ch.ChapelId CREATE (fu)-[:USES]->(ch);
-MATCH (fu:Funeral), (d:Deceased) WHERE fu.FK_DeceasedId = d.DeceasedId CREATE (fu)-[:FOR]->(d);
-MATCH (fu:Funeral), (p:Payment) WHERE fu.FK_PaymentId = p.PaymentId CREATE (fu)-[:PAID_BY]->(p);
-MATCH (d:Deceased), (gr:Grave) WHERE d.FK_GraveId = gr.GraveId CREATE (d)-[:BURIED_IN]->(gr);
-MATCH (d:Deceased), (f:Faith) WHERE d.FK_FaithName = f.FaithName CREATE (d)-[:FOLLOWS]->(f);
-MATCH (r:Reservation), (gr:Grave) WHERE r.FK_GraveId = gr.GraveId CREATE (r)-[:RESERVES]->(gr);
-MATCH (r:Reservation), (u:User) WHERE r.FK_UserId = u.UserId CREATE (r)-[:MADE_BY]->(u);
-MATCH (r:Reservation), (p:Payment) WHERE r.FK_PaymentId = p.PaymentId CREATE (r)-[:PAID_BY]->(p);
-MATCH (dh:DeceasedHistory), (d:Deceased) WHERE dh.FK_DeceasedId = d.DeceasedId CREATE (dh)-[:HISTORY_OF]->(d);
-MATCH (sub:Subscription), (gr:Grave) WHERE sub.FK_GraveId = gr.GraveId CREATE (sub)-[:FOR]->(gr);
-MATCH (sub:Subscription), (se:Service) WHERE sub.FK_ServiceId = se.ServiceId CREATE (sub)-[:USES]->(se);
-MATCH (sub:Subscription), (p:Payment) WHERE sub.FK_PaymentId = p.PaymentId CREATE (sub)-[:PAID_BY]->(p);
-MATCH (pu:Purchase), (u:User) WHERE pu.FK_UserId = u.UserId CREATE (pu)-[:MADE_BY]->(u);
-MATCH (pu:Purchase), (se:Service) WHERE pu.FK_ServiceId = se.ServiceId CREATE (pu)-[:FOR]->(se);
+MATCH (s:Sector), (f:Faith) CREATE (s)-[:HAS_FAITH]->(f);
+MATCH (m:Monument), (s:Sector) CREATE (m)-[:LOCATED_IN]->(s);
+MATCH (g:Gate), (s:Sector) CREATE (g)-[:LOCATED_IN]->(s);
+MATCH (c:Camera), (s:Sector) CREATE (c)-[:LOCATED_IN]->(s);
+MATCH (gr:Grave), (s:Sector) CREATE (gr)-[:LOCATED_IN]->(s);
+MATCH (ch:Chapel), (s:Sector) CREATE (ch)-[:LOCATED_IN]->(s);
+MATCH (fu:Funeral), (ch:Chapel) CREATE (fu)-[:USES]->(ch);
+MATCH (fu:Funeral), (d:Deceased) CREATE (fu)-[:FOR]->(d);
+MATCH (fu:Funeral), (p:Payment) CREATE (fu)-[:PAID_BY]->(p);
+MATCH (d:Deceased), (gr:Grave) CREATE (d)-[:BURIED_IN]->(gr);
+MATCH (d:Deceased), (f:Faith) CREATE (d)-[:BELIVES]->(f);
+MATCH (r:Reservation), (gr:Grave) CREATE (r)-[:RESERVES]->(gr);
+MATCH (r:Reservation), (u:User) CREATE (r)-[:MADE_BY]->(u);
+MATCH (r:Reservation), (p:Payment) CREATE (r)-[:PAID_BY]->(p);
+MATCH (dh:DeceasedHistory), (d:Deceased) CREATE (dh)-[:HISTORY_OF]->(d);
+MATCH (sub:Subscription), (gr:Grave) CREATE (sub)-[:FOR]->(gr);
+MATCH (sub:Subscription), (se:Service) CREATE (sub)-[:USES]->(se);
+MATCH (sub:Subscription), (p:Payment) CREATE (sub)-[:PAID_BY]->(p);
+MATCH (pu:Purchase), (u:User) CREATE (pu)-[:MADE_BY]->(u);
+MATCH (pu:Purchase), (se:Service) CREATE (pu)-[:FOR]->(se);
