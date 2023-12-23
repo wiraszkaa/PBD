@@ -150,3 +150,20 @@ MATCH (sub:Subscription), (se:Service) CREATE (sub)-[:USES]->(se);
 MATCH (sub:Subscription), (p:Payment) CREATE (sub)-[:PAID_BY]->(p);
 MATCH (pu:Purchase), (u:User) CREATE (pu)-[:MADE_BY]->(u);
 MATCH (pu:Purchase), (se:Service) CREATE (pu)-[:FOR]->(se);
+
+//Zapytania
+//Informacje o wszystkich kamerach zainstalowanych w sektorze Edukacja:
+MATCH (c:Camera)-[:LOCATED_IN]->(s:Sector {SectorName: "Education"})
+RETURN c.CameraId, c.CameraModel, c.InstallationDate;
+
+//Wyświeltenie wszyskitch nodeów i relacji
+MATCH (n)-[r]->(m) RETURN n,r,m;
+
+// Informacje o wszystkich pogrzebach, które odbyły się w określonej kaplicy:
+MATCH (ch:Chapel {ChapelName: "Saint Paul's Chapel"})<-[:USES]-(fu:Funeral)
+RETURN fu.FuneralId, fu.FuneralDate, fu.FuneralDescription;
+
+MATCH (fu:Funeral)-[:USES]->(ch:Chapel {ChapelName: "Saint Paul's Chapel"})
+RETURN fu.FuneralId, fu.FuneralDate, fu.FuneralDescription;
+
+
