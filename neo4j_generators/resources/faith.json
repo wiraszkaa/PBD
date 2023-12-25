@@ -1,0 +1,25 @@
+{
+    "faiths": [
+        {"name": "Katolicka", "description": "Wiara bazująca na nauczaniach Jezusa Chrystusa"},
+        {"name": "Protestancka", "description": "Ruch chrześcijański, który odrzuca niektóre doktryny katolickie"},
+        {"name": "Buddyzm", "description": "Droga duchowa skupiająca się na osobistym rozwoju"},
+        {"name": "Islam", "description": "Monoteistyczna wiara Abrahama, której świętą księgą jest Koran"},
+        {"name": "Judaizm", "description": "Starożytna monoteistyczna wiara Abrahama"},
+        {"name": "Hinduizm", "description": "Złożony zbiór wierzeń, praktyk i tradycji"},
+        {"name": "Taoizm", "description": "Filozoficzna i duchowa tradycja chińska"},
+        {"name": "Sikhizm", "description": "Monoteistyczna wiara założona w Pendżabie w Indiach"},
+        {"name": "Bahá'í", "description": "Wiara skupiająca się na duchowej jedności ludzkości"},
+        {"name": "Szamanizm", "description": "Praktyki duchowe oparte na komunikacji ze światem duchów"}
+    ],
+    "names": [
+        "Katolicka",
+        "Protestancka",
+        "Buddyzm",
+        "Islam",
+        "Judaizm",
+        "Hinduizm",
+        "Taoizm",
+        "Sikhizm",
+        "Szamanizm"
+    ]
+}

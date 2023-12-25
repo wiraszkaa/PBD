@@ -14,6 +14,7 @@ import sector_dependent_entities
 import services
 import subscription
 import user
+import funeral
 
 DATABASE_URL = "postgresql://localhost:5432/projectPBD"
 
@@ -33,5 +34,6 @@ with SessionLocal() as session:
     # services.insert_services(session)
     # purchases.insert_purchases(session)
     # reservation.insert_reservation(session)
-    subscription.insert_subscription(session)
+    # subscription.insert_subscription(session)
+    funeral.insert_funerals(session)
     session.commit()
