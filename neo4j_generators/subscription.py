@@ -47,27 +47,37 @@ def insert_payment(session):
 def insert_subscription(session):
     graves = session.read_transaction(fetch_graves)
     services = session.read_transaction(fetch_services)
+    services_ids = [row["ServiceId"]for row in services]
     selected_graves = random.sample(graves, int(0.3 * len(graves)))
 
     for grave in selected_graves:
         subs_id = str(uuid.uuid4())
-        service_id = random.choice(services)
+        service_id = random.choice(services_ids)
         service_start_time = date.today() + timedelta(days=random.randint(1, 365))
         service_end_time = service_start_time + timedelta(days=random.randint(1, 365))
         payment_id = insert_payment(session)
 
         create_subscription_and_relationship_query = """
         MATCH (p:Payment {PaymentId: $payment_id})
+        MATCH (se:Service {ServiceId: $service_id})
+        MATCH (g:Grave {GraveId: $grave_id})
+        
+        
         CREATE (s:Subscription {
             SubscriptionId: $subs_id,
             ServiceStartTime: $service_start_time, 
             ServiceEndTime: $service_end_time
         })
+        
+        CREATE (s)-[:FOR]->(g)
         CREATE (s)-[:PAID_FOR]->(p)
+        CREATE (se)-[:USES]->(s)
         """
 
         session.execute_write(
             lambda tx: tx.run(create_subscription_and_relationship_query, subs_id=subs_id,
+                              service_id=service_id,
+                              grave_id = grave["GraveId"],
                               service_start_time=service_start_time, service_end_time=service_end_time,
                               payment_id=payment_id))
 

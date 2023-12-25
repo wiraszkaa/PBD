@@ -143,7 +143,7 @@ MATCH (fu:Funeral), (ch:Chapel) CREATE (fu)-[:USES]->(ch);
 MATCH (sub:Subscription), (se:Service) CREATE (sub)-[:USES]->(se);
 
 MATCH (fu:Funeral), (d:Deceased) CREATE (fu)-[:FOR]->(d);
-MATCH (sub:Subscription), (gr:Grave) CREATE (sub)-[:FOR]->(gr);
+MATCH (sub:Subscription), (gr:Grave) CREATE (sub)-[:FOR]->(gr);//1
 MATCH (pu:Purchase), (se:Service) CREATE (pu)-[:FOR]->(se);
 
 MATCH (fu:Funeral), (p:Payment) CREATE (fu)-[:PAID_BY]->(p);

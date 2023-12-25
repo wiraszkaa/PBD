@@ -17,7 +17,7 @@ AURA_USERNAME = "neo4j"
 AURA_PASSWORD = "6AT_UMoHXxkFiMIPl0AYuZYVJvb-C1HCIazkyjbgbkU"
 
 
-SECTOR_RANGE = list(range(1, 50))
+SECTOR_RANGE = list(range(61,71))
 
 driver = GraphDatabase.driver(
     AURA_CONNECTION_URI,
@@ -73,13 +73,13 @@ def main():
         # grave.insert_graves(session, SECTOR_RANGE)
 
         # services.insert_services(session)
-        # subscription.insert_subscription(session)
+        subscription.insert_subscription(session)
 
         # reservation.insert_reservation(session)
         # purchase.insert_purchases(session)
-        decease.insert_deceased(session)
-        deceased_history.insert_deceased_history(session)
-        funeral.insert_funerals(session)
+        # decease.insert_deceased(session)
+        # deceased_history.insert_deceased_history(session)
+        # funeral.insert_funerals(session)
         driver.close()
         session.close()
 
