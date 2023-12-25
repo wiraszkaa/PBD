@@ -73,7 +73,7 @@ def main():
         # grave.insert_graves(session, SECTOR_RANGE)
 
         # services.insert_services(session)
-        subscription.insert_subscription(session)
+        # subscription.insert_subscription(session)
 
         # reservation.insert_reservation(session)
         # purchase.insert_purchases(session)

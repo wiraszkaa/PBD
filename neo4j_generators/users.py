@@ -9,7 +9,7 @@ PASSWORD_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789
 def generate_random_email():
     name = random.choice(NAMES).lower()
     surname = random.choice(SURNAMES).lower()
-    domain = ["gmail.com", "yahoo.com", "outlook.com", "test.com", "@pwr.edu.pl"]
+    domain = ["gmail.com", "yahoo.com", "outlook.com", "test.com", "pwr.edu.pl"]
     return f"{name}{generate_random_email_spread()}{surname}{generate_random_email_suffix()}@{random.choice(domain)}"
 
 
