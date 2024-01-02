@@ -33,12 +33,12 @@ def insert_purchases(session):
             create_purchase_node = """
                 MATCH (s:Service {ServiceId: $service_id})
                 MATCH (u:User {UserId: $user_id})
-                CREATE (:Purchase {
+                CREATE (pu:Purchase {
                     PurchaseId: $purchase_id,
                     PurchaseDate: $purchase_date
                 })
                 CREATE (pu)-[:MADE_BY]->(u)
-                CREATE (pu)-[:FOR]->(se)
+                CREATE (pu)-[:FOR]->(s)
             """
             session.execute_write(lambda tx: tx.run(create_purchase_node,
                                                     service_id=service_id,
@@ -58,7 +58,7 @@ def insert_purchases(session):
                                PurchaseDate: $purchase_date
                                })
                                 CREATE (pu)-[:MADE_BY]->(u)
-                                CREATE (pu)-[:FOR]->(se)
+                                CREATE (pu)-[:FOR]->(s)
                            """
                 session.execute_write(lambda tx: tx.run(create_purchase_node,
                                                         service_id=service_id,
@@ -78,7 +78,7 @@ def insert_purchases(session):
                                     PurchaseDate: $purchase_date
                                     })
                                      CREATE (pu)-[:MADE_BY]->(u)
-                                     CREATE (pu)-[:FOR]->(se)
+                                     CREATE (pu)-[:FOR]->(s)
                                 """
                 session.execute_write(lambda tx: tx.run(create_purchase_node,
                                                         service_id=service_id,

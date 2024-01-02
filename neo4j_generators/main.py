@@ -62,7 +62,7 @@ def set_up_constrains(session):
 def main():
     with driver.session() as session:
         # set_up_constrains(session)
-        # delete_all_nodes(session)
+        delete_all_nodes(session)
 
         # faith.insert_faiths(session)
         # sector.insert_sectors(session, SECTOR_RANGE)
@@ -80,6 +80,7 @@ def main():
         # decease.insert_deceased(session)
         # deceased_history.insert_deceased_history(session)
         # funeral.insert_funerals(session)
+
         driver.close()
         session.close()
 
