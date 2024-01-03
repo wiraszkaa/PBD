@@ -22,7 +22,7 @@ def generate_random_date():
     return datetime(random_year, random_month, random_day)
 
 
-def insert_graves(session, sector_range, n_per_sector_range=[1, 50]):
+def insert_graves(session, sector_range, n_per_sector_range=[1, 100]):
     n_per_sector = random.choice(n_per_sector_range)
     for _ in sector_range:
         for _ in range(n_per_sector):

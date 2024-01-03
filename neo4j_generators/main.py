@@ -17,7 +17,7 @@ AURA_USERNAME = "neo4j"
 AURA_PASSWORD = "6AT_UMoHXxkFiMIPl0AYuZYVJvb-C1HCIazkyjbgbkU"
 
 
-SECTOR_RANGE = list(range(61,71))
+SECTOR_RANGE = list(range(1,30))
 
 driver = GraphDatabase.driver(
     AURA_CONNECTION_URI,
@@ -51,7 +51,8 @@ def set_up_constrains(session):
         "CREATE CONSTRAINT FOR (c:Camera) REQUIRE c.CameraId IS UNIQUE",
         "CREATE CONSTRAINT FOR (ga:Gate) REQUIRE ga.GateId IS UNIQUE",
         "CREATE CONSTRAINT FOR (mo:Monument) REQUIRE mo.MonumentId IS UNIQUE",
-        "CREATE CONSTRAINT FOR (s:Sector) REQUIRE s.SectorId IS UNIQUE"]
+        "CREATE CONSTRAINT FOR (s:Sector) REQUIRE s.SectorName IS UNIQUE"
+    ]
 
     for query in queries:
         session.execute_write(lambda tx: tx.run(query))
@@ -62,15 +63,15 @@ def set_up_constrains(session):
 def main():
     with driver.session() as session:
         # set_up_constrains(session)
-        delete_all_nodes(session)
+        # delete_all_nodes(session)
 
         # faith.insert_faiths(session)
-        # sector.insert_sectors(session, SECTOR_RANGE)
         # sector_dependent_entites.generate_data_for_sectors(session, SECTOR_RANGE)
+        # grave.insert_graves(session, SECTOR_RANGE)
+        # sector.insert_sectors(session)
 
         # users.insert_users(session, "user", 1000)
 
-        # grave.insert_graves(session, SECTOR_RANGE)
 
         # services.insert_services(session)
         # subscription.insert_subscription(session)
